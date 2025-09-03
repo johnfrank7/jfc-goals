@@ -1,14 +1,19 @@
 import { useState } from 'react'
 import { StyleSheet, Text, TextInput, Pressable } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { useGoals } from '../../hooks/useGoals'
 
 const Create = () => {
   const [goal, setGoal] = useState('')
+  const { createGoal } = useGoals()
+
+    const handleSubmit = async () => {
+      await createGoal({
+        goal,
+        progress:0
+      })
+    } 
   
-  const handleSubmit = async () => {
-
-  }
-
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Create a New Goal</Text>
